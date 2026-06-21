@@ -1,0 +1,5 @@
+*.vscode
+cpu
+io
+mem
+threads
