@@ -13,4 +13,3 @@ During my 2nd year of college, I took an operating systems class and genuinely e
 ├── ostep-book     # The book divided into different chapters
 ├── ostep-code     # Code snippets and examples provided in the book
 ├── ostep-homework # Simulators + my solutions to different chapter assignments
-└── ostep-projects # Suggested projects (and my implementations of them)
