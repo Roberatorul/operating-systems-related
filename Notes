@@ -1,7 +1,0 @@
-volatile memory - RAM-ul: este o memorie rapida insa atunci cand se opreste curentul se pierd datele
-non volatile memory - HDD SSD: retin date si dupa ce se opreste curentul; sunt cu mult mai incete decat RAM-ul
-
-In early (or simple) operating systems, the loading process is done eagerly, i.e., all at once before running the program; modern OSes perform the process lazily, i.e., by loading pieces of code or data only as they are
-needed during program execution. To truly understand how lazy loading of pieces of code and data works, you’ll have to  understand more about he machinery of paging and swapping, topics we’ll cover in the future when we discuss the
-virtualization of memory. For now, just remember that before running anything, the OS clearly must do some work to get
-the important program bits from disk into memory.
