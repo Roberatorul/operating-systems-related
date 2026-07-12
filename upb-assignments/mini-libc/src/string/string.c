@@ -4,38 +4,70 @@
 
 char *strcpy(char *destination, const char *source)
 {
-	/* TODO: Implement strcpy(). */
+	size_t i;
+
+	for (i = 0; source[i] != '\0'; i++)
+		destination[i] = source[i];
+	destination[i] = '\0';
+
 	return destination;
 }
 
 char *strncpy(char *destination, const char *source, size_t len)
 {
-	/* TODO: Implement strncpy(). */
+	size_t i;
+
+	for (i = 0; source[i] != '\0' && i < len; i++)
+		destination[i] = source[i];
+
+	while (i < len)
+		destination[i++] = '\0';
+
 	return destination;
 }
 
 char *strcat(char *destination, const char *source)
 {
-	/* TODO: Implement strcat(). */
+	size_t dest_len = strlen(destination);
+	size_t i;
+
+	for (i = 0; source[i] != '\0'; i++)
+		destination[dest_len + i] = source[i];
+	destination[i] = '\0';
+
 	return destination;
 }
 
 char *strncat(char *destination, const char *source, size_t len)
 {
-	/* TODO: Implement strncat(). */
+	size_t dest_len = strlen(destination);
+	size_t i;
+
+	for (i = 0; source[i] != '\0' && i < len; i++)
+		destination[dest_len + i] = source[i];
+	destination[i] = '\0';
+	
 	return destination;
 }
 
 int strcmp(const char *str1, const char *str2)
 {
-	/* TODO: Implement strcmp(). */
-	return -1;
+	size_t i;
+
+	for (i = 0; str1[i] != '\0' && str2[i] != '\0'; i++)
+		if (str1[i] != str2[i]) return (str1[i] - str2[i]);
+
+	return (str1[i] - str2[i]);
 }
 
 int strncmp(const char *str1, const char *str2, size_t len)
 {
-	/* TODO: Implement strncmp(). */
-	return -1;
+	size_t i;
+
+	for (i = 0; str1[i] != '\0' && str2[i] != '\0' && i < len; i++)
+		if (str1[i] != str2[i]) return (str1[i] - str2[i]);
+
+	return (str1[i] - str2[i]);
 }
 
 size_t strlen(const char *str)
@@ -50,19 +82,46 @@ size_t strlen(const char *str)
 
 char *strchr(const char *str, int c)
 {
-	/* TODO: Implement strchr(). */
+	size_t i;
+
+	for (i = 0; str[i] != '\0'; i++)
+		if (str[i] == c) return &str[i];
+
+	if (str[i] == c) return &str[i];
+
 	return NULL;
 }
 
 char *strrchr(const char *str, int c)
 {
-	/* TODO: Implement strrchr(). */
-	return NULL;
+	char* last_occ = NULL;
+	size_t i;
+
+	for (i = 0; str[i] != '\0'; i++)
+		if (str[i] == c) last_occ = &str[i];
+
+	if (str[i] == c) last_occ = &str[i];
+
+	return last_occ;
 }
 
 char *strstr(const char *haystack, const char *needle)
 {
-	/* TODO: Implement strstr(). */
+	int is_valid;
+
+	for (size_t i = 0; haystack[i] != '\0'; i++) {
+		is_valid = 1;
+		for (size_t j = 0; needle[j] != '\0'; j++) {
+			if (haystack[i + j] != needle[j]) {
+				is_valid = 0;
+				break;
+			}
+		}
+
+		if (is_valid) return (char*)&haystack[i];
+	}
+
+
 	return NULL;
 }
 
