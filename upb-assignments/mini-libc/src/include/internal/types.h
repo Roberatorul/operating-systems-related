@@ -1,7 +1,7 @@
 /* SPDX-License-Identifier: BSD-3-Clause */
 
-#ifndef __TYPES_H__
-#define __TYPES_H__	1
+#ifndef __INTERNAL_TYPES_H__
+#define __INTERNAL_TYPES_H__	1
 
 typedef unsigned long size_t;
 typedef long ssize_t;

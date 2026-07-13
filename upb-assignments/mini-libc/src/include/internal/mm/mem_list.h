@@ -17,6 +17,7 @@ struct mem_list {
 };
 
 extern struct mem_list mem_list_head;
+extern int is_list_initialised;
 
 void mem_list_init(void);
 int mem_list_add(void *start, size_t len);

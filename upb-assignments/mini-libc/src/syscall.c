@@ -2,6 +2,7 @@
 
 #include <internal/arch/x86_64/syscall_arch.h>
 #include <stdarg.h>
+#include <errno.h>
 
 long syscall(long num, ...)
 {

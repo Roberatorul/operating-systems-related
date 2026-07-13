@@ -106,7 +106,7 @@ graded_test.h  process/            test_io.c           test_malloc.sh*          
 
 To test and grade your assignment solution, enter the `tests/` directory and run `grade.sh`.
 Note that this requires linters being available.
-The easiest is to use a Docker-based setup with everything installed, as shown in the section ["Running the Linters"](#running-the-linters).
+The easiest is to use a Docker-based setup with everything installed.
 When using `grade.sh` you will get grades for checking correctness (maximum `90` points) and for coding style (maxim `10` points).
 A successful run will provide you an output ending with:
 
@@ -126,7 +126,7 @@ Total:                                                          100/100
 
 ### Running the Checker
 
-To run only the checker, use the `make check` command in the `tests/` directory:
+To only run the checker, use the `make check` command in the `tests/` directory:
 
 ```console
 student@so:~/.../assignments/mini-libc/tests$ make check
@@ -267,7 +267,7 @@ Total:                                                            90/100
 ### Running the Linters
 
 To run the linters, use the `make linter` command in the `tests/` directory.
-Note that the linters have to be installed on your system: [`checkpatch.pl`](https://.com/torvalds/linux/blob/master/scripts/checkpatch.pl), [`cpplint`](https://github.com/cpplint/cpplint), [`shellcheck`](https://www.shellcheck.net/) with certain configuration options.
+Note that linters have to installed in your system: [`checkpatch.pl`](https://.com/torvalds/linux/blob/master/scripts/checkpatch.pl), [`cpplint`](https://github.com/cpplint/cpplint), [`shellcheck`](https://www.shellcheck.net/) with certain configuration options.
 It's easiest to run them in a Docker-based setup with everything configured:
 
 ```console

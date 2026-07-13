@@ -1,0 +1,689 @@
+[2026-07-13T20:30:47] [INFO] Building image...
+sha256:de04a66eec37e99d71c45b0ef0529fa0a4eb1fd8c852c16ed0609d142590c54d
+[2026-07-13T20:30:47] [INFO] Running checker...
+
+
+### CHECKER
+
+
+make -C /build/pc/mini-libc/src clean
+make[1]: Entering directory '/build/pc/mini-libc/src'
+rm -f *~
+rm -f syscall.o process/exit.o mm/malloc.o mm/mmap.o mm/mem_list.o string/string.o stat/fstatat.o stat/fstat.o stat/stat.o io/open.o io/close.o io/read_write.o io/lseek.o io/truncate.o io/ftruncate.o io/puts.o process/nanosleep.o process/sleep.o errno.o crt/__libc_start_main.o crt/start.o
+rm -f libc.a
+make[1]: Leaving directory '/build/pc/mini-libc/src'
+make clean
+make[1]: Entering directory '/build/pc/mini-libc/tests'
+make -C io clean
+make[2]: Entering directory '/build/pc/mini-libc/tests/io'
+rm -f *~
+rm -f stat.o open_close_create_file.o puts.o open_invalid_access.o open_non_existent_file.o open_close_read_byte.o lseek.o fstat.o truncate.o open_close_existent_file.o ftruncate.o
+rm -f stat open_close_create_file puts open_invalid_access open_non_existent_file open_close_read_byte lseek fstat truncate open_close_existent_file ftruncate
+make[2]: Leaving directory '/build/pc/mini-libc/tests/io'
+make -C memory clean
+make[2]: Entering directory '/build/pc/mini-libc/tests/memory'
+rm -f *~
+rm -f multiple_malloc.o mmap_munmap.o malloc_free.o mmap_perm_none.o mmap_perm_notok.o multiple_malloc_free.o malloc.o malloc_perm_ok.o malloc_free_sequence.o mmap.o malloc_perm_notok.o mmap_perm_ok.o
+rm -f multiple_malloc mmap_munmap malloc_free mmap_perm_none mmap_perm_notok multiple_malloc_free malloc malloc_perm_ok malloc_free_sequence mmap malloc_perm_notok mmap_perm_ok
+make[2]: Leaving directory '/build/pc/mini-libc/tests/memory'
+make -C process clean
+make[2]: Entering directory '/build/pc/mini-libc/tests/process'
+rm -f *~
+rm -f sleep.o nanosleep.o
+rm -f sleep nanosleep
+make[2]: Leaving directory '/build/pc/mini-libc/tests/process'
+rm -f *~
+rm -f graded_test.o test_io.o test_string.o test_memory.o
+rm -f test_io test_string test_memory
+make[1]: Leaving directory '/build/pc/mini-libc/tests'
+make -i SRC_PATH=/build/pc/mini-libc/src
+make[1]: Entering directory '/build/pc/mini-libc/tests'
+make -C /build/pc/mini-libc/src
+make[2]: Entering directory '/build/pc/mini-libc/src'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o syscall.o syscall.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o process/exit.o process/exit.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/malloc.o mm/malloc.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/mmap.o mm/mmap.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o mm/mem_list.o mm/mem_list.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o string/string.o string/string.c
+string/string.c: In function 'strchr':
+string/string.c:88:27: warning: return discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   88 |   if (str[i] == c) return &str[i];
+      |                           ^~~~~~~
+string/string.c:90:26: warning: return discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+   90 |  if (str[i] == c) return &str[i];
+      |                          ^~~~~~~
+string/string.c: In function 'strrchr':
+string/string.c:101:29: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  101 |   if (str[i] == c) last_occ = &str[i];
+      |                             ^
+string/string.c:103:28: warning: assignment discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  103 |  if (str[i] == c) last_occ = &str[i];
+      |                            ^
+string/string.c: In function 'memmove':
+string/string.c:174:29: warning: comparison of unsigned expression >= 0 is always true [-Wtype-limits]
+  174 |  for (size_t i = num - 1; i >= 0; i--)
+      |                             ^~
+string/string.c: In function 'memset':
+string/string.c:193:32: warning: unused parameter 'value' [-Wunused-parameter]
+  193 | void *memset(void *source, int value, size_t num)
+      |                            ~~~~^~~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o stat/fstatat.o stat/fstatat.c
+stat/fstatat.c: In function 'fstatat_statx':
+stat/fstatat.c:43:23: warning: unused parameter 'fd' [-Wunused-parameter]
+   43 | int fstatat_statx(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                   ~~~~^~
+stat/fstatat.c:43:48: warning: unused parameter 'path' [-Wunused-parameter]
+   43 | int fstatat_statx(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                           ~~~~~~~~~~~~~~~~~~~~~^~~~
+stat/fstatat.c:43:76: warning: unused parameter 'st' [-Wunused-parameter]
+   43 | int fstatat_statx(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                                                      ~~~~~~~~~~~~~~~~~~~~~~^~
+stat/fstatat.c:43:84: warning: unused parameter 'flag' [-Wunused-parameter]
+   43 | int fstatat_statx(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                                                                                ~~~~^~~~
+stat/fstatat.c: In function 'fstatat':
+stat/fstatat.c:49:17: warning: unused parameter 'fd' [-Wunused-parameter]
+   49 | int fstatat(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |             ~~~~^~
+stat/fstatat.c:49:42: warning: unused parameter 'path' [-Wunused-parameter]
+   49 | int fstatat(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                     ~~~~~~~~~~~~~~~~~~~~~^~~~
+stat/fstatat.c:49:70: warning: unused parameter 'st' [-Wunused-parameter]
+   49 | int fstatat(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                                                ~~~~~~~~~~~~~~~~~~~~~~^~
+stat/fstatat.c:49:78: warning: unused parameter 'flag' [-Wunused-parameter]
+   49 | int fstatat(int fd, const char *restrict path, struct stat *restrict st, int flag)
+      |                                                                          ~~~~^~~~
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o stat/fstat.o stat/fstat.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o stat/stat.o stat/stat.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/open.o io/open.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/close.o io/close.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/read_write.o io/read_write.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/lseek.o io/lseek.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/truncate.o io/truncate.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/ftruncate.o io/ftruncate.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o io/puts.o io/puts.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o process/nanosleep.o process/nanosleep.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o process/sleep.o process/sleep.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o errno.o errno.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -Iinclude  -c -o crt/__libc_start_main.o crt/__libc_start_main.c
+nasm -f elf64 -o crt/start.o crt/start.asm
+ar -rc libc.a syscall.o process/exit.o mm/malloc.o mm/mmap.o mm/mem_list.o string/string.o stat/fstatat.o stat/fstat.o stat/stat.o io/open.o io/close.o io/read_write.o io/lseek.o io/truncate.o io/ftruncate.o io/puts.o process/nanosleep.o process/sleep.o errno.o crt/__libc_start_main.o crt/start.o
+make[2]: Leaving directory '/build/pc/mini-libc/src'
+make -C io SRC_PATH=/build/pc/mini-libc/src
+make[2]: Entering directory '/build/pc/mini-libc/tests/io'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o stat.o stat.c
+make -C /build/pc/mini-libc/src
+make[3]: Entering directory '/build/pc/mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/pc/mini-libc/src'
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o stat stat.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: stat] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o open_close_create_file.o open_close_create_file.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o open_close_create_file open_close_create_file.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: open_close_create_file] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o puts.o puts.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o puts puts.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: puts] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o open_invalid_access.o open_invalid_access.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o open_invalid_access open_invalid_access.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: open_invalid_access] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o open_non_existent_file.o open_non_existent_file.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o open_non_existent_file open_non_existent_file.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: open_non_existent_file] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o open_close_read_byte.o open_close_read_byte.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o open_close_read_byte open_close_read_byte.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: open_close_read_byte] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o lseek.o lseek.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o lseek lseek.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: lseek] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o fstat.o fstat.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o fstat fstat.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: fstat] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o truncate.o truncate.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o truncate truncate.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: truncate] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o open_close_existent_file.o open_close_existent_file.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o open_close_existent_file open_close_existent_file.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: open_close_existent_file] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o ftruncate.o ftruncate.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o ftruncate ftruncate.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: ftruncate] Error 1 (ignored)
+make[2]: Leaving directory '/build/pc/mini-libc/tests/io'
+make -C memory SRC_PATH=/build/pc/mini-libc/src
+make[2]: Entering directory '/build/pc/mini-libc/tests/memory'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o multiple_malloc.o multiple_malloc.c
+make -C /build/pc/mini-libc/src
+make[3]: Entering directory '/build/pc/mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/pc/mini-libc/src'
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o multiple_malloc multiple_malloc.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: multiple_malloc] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o mmap_munmap.o mmap_munmap.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o mmap_munmap mmap_munmap.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: mmap_munmap] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o malloc_free.o malloc_free.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o malloc_free malloc_free.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: malloc_free] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o mmap_perm_none.o mmap_perm_none.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o mmap_perm_none mmap_perm_none.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: mmap_perm_none] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o mmap_perm_notok.o mmap_perm_notok.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o mmap_perm_notok mmap_perm_notok.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: mmap_perm_notok] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o multiple_malloc_free.o multiple_malloc_free.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o multiple_malloc_free multiple_malloc_free.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: multiple_malloc_free] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o malloc.o malloc.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o malloc malloc.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: malloc] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o malloc_perm_ok.o malloc_perm_ok.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o malloc_perm_ok malloc_perm_ok.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: malloc_perm_ok] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o malloc_free_sequence.o malloc_free_sequence.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o malloc_free_sequence malloc_free_sequence.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: malloc_free_sequence] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o mmap.o mmap.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o mmap mmap.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: mmap] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o malloc_perm_notok.o malloc_perm_notok.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o malloc_perm_notok malloc_perm_notok.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: malloc_perm_notok] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o mmap_perm_ok.o mmap_perm_ok.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o mmap_perm_ok mmap_perm_ok.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: mmap_perm_ok] Error 1 (ignored)
+make[2]: Leaving directory '/build/pc/mini-libc/tests/memory'
+make -C process SRC_PATH=/build/pc/mini-libc/src
+make[2]: Entering directory '/build/pc/mini-libc/tests/process'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o sleep.o sleep.c
+make -C /build/pc/mini-libc/src
+make[3]: Entering directory '/build/pc/mini-libc/src'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/build/pc/mini-libc/src'
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o sleep sleep.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: sleep] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o nanosleep.o nanosleep.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o nanosleep nanosleep.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[2]: [Makefile:19: nanosleep] Error 1 (ignored)
+make[2]: Leaving directory '/build/pc/mini-libc/tests/process'
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o test_io.o test_io.c
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o graded_test.o graded_test.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o test_io test_io.o graded_test.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[1]: [Makefile:20: test_io] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o test_string.o test_string.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o test_string test_string.o graded_test.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[1]: [Makefile:20: test_string] Error 1 (ignored)
+cc -Wall -Wextra -fno-PIC -fno-stack-protector -fno-builtin -g -O0 -nostdinc -I. -I/build/pc/mini-libc/src/include  -c -o test_memory.o test_memory.c
+cc -nostdlib -no-pie -L/build/pc/mini-libc/src -o test_memory test_memory.o graded_test.o -lc
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(mem_list.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+/usr/bin/ld: /build/pc/mini-libc/src/libc.a(__libc_start_main.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: multiple definition of `is_list_initialised'; /build/pc/mini-libc/src/libc.a(malloc.o):/build/pc/mini-libc/src/include/internal/mm/mem_list.h:20: first defined here
+collect2: error: ld returned 1 exit status
+make[1]: [Makefile:20: test_memory] Error 1 (ignored)
+make[1]: Leaving directory '/build/pc/mini-libc/tests'
+./run_all_tests.sh
+./run_all_tests.sh: line 5: ./test_string: No such file or directory
+./run_all_tests.sh: line 8: ./test_io: No such file or directory
+No such file ./io/puts
+test_puts                        ........................ failed ...  0
+No such file ./io/open_close_create_file
+test_open_close_create_file      ........................ failed ...  0
+No such file ./io/open_close_read_byte
+test_open_close_read_byte        ........................ failed ...  0
+No such file ./io/ftruncate
+test_ftruncate                   ........................ failed ...  0
+No such file ./io/truncate
+test_truncate                    ........................ failed ...  0
+No such file ./io/fstat
+test_fstat                       ........................ failed ...  0
+No such file ./io/stat
+test_stat                        ........................ failed ...  0
+No such file ./process/sleep
+test_sleep                       ........................ failed ...  0
+No such file ./process/nanosleep
+test_nanosleep                   ........................ failed ...  0
+./run_all_tests.sh: line 21: ./test_memory: No such file or directory
+No such file ./memory/malloc
+test_malloc                      ........................ failed ...  0
+No such file ./memory/multiple_malloc
+test_multiple_malloc             ........................ failed ...  0
+No such file ./memory/malloc_free
+test_malloc_free                 ........................ failed ...  0
+No such file ./memory/multiple_malloc_free
+test_multiple_malloc_free        ........................ failed ...  0
+No such file ./memory/malloc_free_sequence
+test_malloc_free_sequence        ........................ failed ...  0
+No such file ./memory/malloc_perm_ok
+test_malloc_perm_ok              ........................ failed ...  0
+test_malloc_perm_notok           ........................ failed ...  0
+No such file ./memory/mmap
+test_mmap                        ........................ failed ...  0
+No such file ./memory/mmap_munmap
+test_mmap_munmap                 ........................ failed ...  0
+No such file ./memory/mmap_perm_ok
+test_mmap_perm_ok                ........................ failed ...  0
+test_mmap_perm_notok             ........................ failed ...  0
+test_mmap_perm_none              ........................ failed ...  0
+
+Checker:                                                             0/100
+
+
+### LINTER
+
+
+cd .. && checkpatch.pl -f src/*.c tests/*.c tests/*/*.c
+-----------
+src/errno.c
+-----------
+total: 0 errors, 0 warnings, 5 lines checked
+
+src/errno.c has no obvious style problems and is ready for submission.
+-------------
+src/syscall.c
+-------------
+total: 0 errors, 0 warnings, 22 lines checked
+
+src/syscall.c has no obvious style problems and is ready for submission.
+-------------------
+tests/graded_test.c
+-------------------
+total: 0 errors, 0 warnings, 116 lines checked
+
+tests/graded_test.c has no obvious style problems and is ready for submission.
+---------------
+tests/test_io.c
+---------------
+total: 0 errors, 0 warnings, 431 lines checked
+
+tests/test_io.c has no obvious style problems and is ready for submission.
+-------------------
+tests/test_memory.c
+-------------------
+total: 0 errors, 0 warnings, 175 lines checked
+
+tests/test_memory.c has no obvious style problems and is ready for submission.
+-------------------
+tests/test_string.c
+-------------------
+total: 0 errors, 0 warnings, 517 lines checked
+
+tests/test_string.c has no obvious style problems and is ready for submission.
+----------------
+tests/io/fstat.c
+----------------
+total: 0 errors, 0 warnings, 115 lines checked
+
+tests/io/fstat.c has no obvious style problems and is ready for submission.
+--------------------
+tests/io/ftruncate.c
+--------------------
+total: 0 errors, 0 warnings, 29 lines checked
+
+tests/io/ftruncate.c has no obvious style problems and is ready for submission.
+----------------
+tests/io/lseek.c
+----------------
+total: 0 errors, 0 warnings, 39 lines checked
+
+tests/io/lseek.c has no obvious style problems and is ready for submission.
+---------------------------------
+tests/io/open_close_create_file.c
+---------------------------------
+total: 0 errors, 0 warnings, 24 lines checked
+
+tests/io/open_close_create_file.c has no obvious style problems and is ready for submission.
+-----------------------------------
+tests/io/open_close_existent_file.c
+-----------------------------------
+total: 0 errors, 0 warnings, 24 lines checked
+
+tests/io/open_close_existent_file.c has no obvious style problems and is ready for submission.
+-------------------------------
+tests/io/open_close_read_byte.c
+-------------------------------
+total: 0 errors, 0 warnings, 33 lines checked
+
+tests/io/open_close_read_byte.c has no obvious style problems and is ready for submission.
+------------------------------
+tests/io/open_invalid_access.c
+------------------------------
+total: 0 errors, 0 warnings, 24 lines checked
+
+tests/io/open_invalid_access.c has no obvious style problems and is ready for submission.
+---------------------------------
+tests/io/open_non_existent_file.c
+---------------------------------
+total: 0 errors, 0 warnings, 20 lines checked
+
+tests/io/open_non_existent_file.c has no obvious style problems and is ready for submission.
+---------------
+tests/io/puts.c
+---------------
+total: 0 errors, 0 warnings, 10 lines checked
+
+tests/io/puts.c has no obvious style problems and is ready for submission.
+---------------
+tests/io/stat.c
+---------------
+total: 0 errors, 0 warnings, 106 lines checked
+
+tests/io/stat.c has no obvious style problems and is ready for submission.
+-------------------
+tests/io/truncate.c
+-------------------
+total: 0 errors, 0 warnings, 20 lines checked
+
+tests/io/truncate.c has no obvious style problems and is ready for submission.
+---------------------
+tests/memory/malloc.c
+---------------------
+total: 0 errors, 0 warnings, 22 lines checked
+
+tests/memory/malloc.c has no obvious style problems and is ready for submission.
+--------------------------
+tests/memory/malloc_free.c
+--------------------------
+total: 0 errors, 0 warnings, 23 lines checked
+
+tests/memory/malloc_free.c has no obvious style problems and is ready for submission.
+-----------------------------------
+tests/memory/malloc_free_sequence.c
+-----------------------------------
+total: 0 errors, 0 warnings, 33 lines checked
+
+tests/memory/malloc_free_sequence.c has no obvious style problems and is ready for submission.
+--------------------------------
+tests/memory/malloc_perm_notok.c
+--------------------------------
+total: 0 errors, 0 warnings, 22 lines checked
+
+tests/memory/malloc_perm_notok.c has no obvious style problems and is ready for submission.
+-----------------------------
+tests/memory/malloc_perm_ok.c
+-----------------------------
+total: 0 errors, 0 warnings, 22 lines checked
+
+tests/memory/malloc_perm_ok.c has no obvious style problems and is ready for submission.
+-------------------
+tests/memory/mmap.c
+-------------------
+total: 0 errors, 0 warnings, 23 lines checked
+
+tests/memory/mmap.c has no obvious style problems and is ready for submission.
+--------------------------
+tests/memory/mmap_munmap.c
+--------------------------
+total: 0 errors, 0 warnings, 25 lines checked
+
+tests/memory/mmap_munmap.c has no obvious style problems and is ready for submission.
+-----------------------------
+tests/memory/mmap_perm_none.c
+-----------------------------
+total: 0 errors, 0 warnings, 24 lines checked
+
+tests/memory/mmap_perm_none.c has no obvious style problems and is ready for submission.
+------------------------------
+tests/memory/mmap_perm_notok.c
+------------------------------
+total: 0 errors, 0 warnings, 20 lines checked
+
+tests/memory/mmap_perm_notok.c has no obvious style problems and is ready for submission.
+---------------------------
+tests/memory/mmap_perm_ok.c
+---------------------------
+total: 0 errors, 0 warnings, 20 lines checked
+
+tests/memory/mmap_perm_ok.c has no obvious style problems and is ready for submission.
+------------------------------
+tests/memory/multiple_malloc.c
+------------------------------
+total: 0 errors, 0 warnings, 30 lines checked
+
+tests/memory/multiple_malloc.c has no obvious style problems and is ready for submission.
+-----------------------------------
+tests/memory/multiple_malloc_free.c
+-----------------------------------
+total: 0 errors, 0 warnings, 34 lines checked
+
+tests/memory/multiple_malloc_free.c has no obvious style problems and is ready for submission.
+-------------------------
+tests/process/nanosleep.c
+-------------------------
+total: 0 errors, 0 warnings, 14 lines checked
+
+tests/process/nanosleep.c has no obvious style problems and is ready for submission.
+---------------------
+tests/process/sleep.c
+---------------------
+total: 0 errors, 0 warnings, 10 lines checked
+
+tests/process/sleep.c has no obvious style problems and is ready for submission.
+
+NOTE: Ignored message types: ARRAY_SIZE AVOID_EXTERNS C99_COMMENTS EMAIL_SUBJECT ENOSYS FILE_PATH_CHANGES GIT_COMMIT_ID NEW_TYPEDEFS STRCPY STRNCPY SYMBOLIC_PERMS
+cd .. && checkpatch.pl -f checker/*.sh tests/*.sh
+------------------
+checker/checker.sh
+------------------
+total: 0 errors, 0 warnings, 11 lines checked
+
+checker/checker.sh has no obvious style problems and is ready for submission.
+--------------
+tests/grade.sh
+--------------
+total: 0 errors, 0 warnings, 136 lines checked
+
+tests/grade.sh has no obvious style problems and is ready for submission.
+------------------------
+tests/graded_test.inc.sh
+------------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/graded_test.inc.sh has no obvious style problems and is ready for submission.
+----------------------
+tests/run_all_tests.sh
+----------------------
+total: 0 errors, 0 warnings, 43 lines checked
+
+tests/run_all_tests.sh has no obvious style problems and is ready for submission.
+-------------------
+tests/test_fstat.sh
+-------------------
+total: 0 errors, 0 warnings, 40 lines checked
+
+tests/test_fstat.sh has no obvious style problems and is ready for submission.
+-----------------------
+tests/test_ftruncate.sh
+-----------------------
+total: 0 errors, 0 warnings, 46 lines checked
+
+tests/test_ftruncate.sh has no obvious style problems and is ready for submission.
+----------------------------
+tests/test_io_file_create.sh
+----------------------------
+total: 0 errors, 0 warnings, 16 lines checked
+
+tests/test_io_file_create.sh has no obvious style problems and is ready for submission.
+----------------------------
+tests/test_io_file_delete.sh
+----------------------------
+total: 0 errors, 0 warnings, 17 lines checked
+
+tests/test_io_file_delete.sh has no obvious style problems and is ready for submission.
+-------------------
+tests/test_lseek.sh
+-------------------
+total: 0 errors, 0 warnings, 40 lines checked
+
+tests/test_lseek.sh has no obvious style problems and is ready for submission.
+--------------------
+tests/test_malloc.sh
+--------------------
+total: 0 errors, 0 warnings, 56 lines checked
+
+tests/test_malloc.sh has no obvious style problems and is ready for submission.
+-------------------------
+tests/test_malloc_free.sh
+-------------------------
+total: 0 errors, 0 warnings, 68 lines checked
+
+tests/test_malloc_free.sh has no obvious style problems and is ready for submission.
+----------------------------------
+tests/test_malloc_free_sequence.sh
+----------------------------------
+total: 0 errors, 0 warnings, 56 lines checked
+
+tests/test_malloc_free_sequence.sh has no obvious style problems and is ready for submission.
+-------------------------------
+tests/test_malloc_perm_notok.sh
+-------------------------------
+total: 0 errors, 0 warnings, 47 lines checked
+
+tests/test_malloc_perm_notok.sh has no obvious style problems and is ready for submission.
+----------------------------
+tests/test_malloc_perm_ok.sh
+----------------------------
+total: 0 errors, 0 warnings, 47 lines checked
+
+tests/test_malloc_perm_ok.sh has no obvious style problems and is ready for submission.
+------------------
+tests/test_mmap.sh
+------------------
+total: 0 errors, 0 warnings, 50 lines checked
+
+tests/test_mmap.sh has no obvious style problems and is ready for submission.
+-------------------------
+tests/test_mmap_munmap.sh
+-------------------------
+total: 0 errors, 0 warnings, 50 lines checked
+
+tests/test_mmap_munmap.sh has no obvious style problems and is ready for submission.
+----------------------------
+tests/test_mmap_perm_none.sh
+----------------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/test_mmap_perm_none.sh has no obvious style problems and is ready for submission.
+-----------------------------
+tests/test_mmap_perm_notok.sh
+-----------------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/test_mmap_perm_notok.sh has no obvious style problems and is ready for submission.
+--------------------------
+tests/test_mmap_perm_ok.sh
+--------------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/test_mmap_perm_ok.sh has no obvious style problems and is ready for submission.
+-----------------------------
+tests/test_multiple_malloc.sh
+-----------------------------
+total: 0 errors, 0 warnings, 56 lines checked
+
+tests/test_multiple_malloc.sh has no obvious style problems and is ready for submission.
+----------------------------------
+tests/test_multiple_malloc_free.sh
+----------------------------------
+total: 0 errors, 0 warnings, 56 lines checked
+
+tests/test_multiple_malloc_free.sh has no obvious style problems and is ready for submission.
+-----------------------
+tests/test_nanosleep.sh
+-----------------------
+total: 0 errors, 0 warnings, 46 lines checked
+
+tests/test_nanosleep.sh has no obvious style problems and is ready for submission.
+------------------------
+tests/test_open_close.sh
+------------------------
+total: 0 errors, 0 warnings, 79 lines checked
+
+tests/test_open_close.sh has no obvious style problems and is ready for submission.
+------------------
+tests/test_puts.sh
+------------------
+total: 0 errors, 0 warnings, 38 lines checked
+
+tests/test_puts.sh has no obvious style problems and is ready for submission.
+-------------------
+tests/test_sleep.sh
+-------------------
+total: 0 errors, 0 warnings, 52 lines checked
+
+tests/test_sleep.sh has no obvious style problems and is ready for submission.
+------------------
+tests/test_stat.sh
+------------------
+total: 0 errors, 0 warnings, 41 lines checked
+
+tests/test_stat.sh has no obvious style problems and is ready for submission.
+----------------------
+tests/test_truncate.sh
+----------------------
+total: 0 errors, 0 warnings, 46 lines checked
+
+tests/test_truncate.sh has no obvious style problems and is ready for submission.
+
+NOTE: Ignored message types: ARRAY_SIZE AVOID_EXTERNS C99_COMMENTS EMAIL_SUBJECT ENOSYS FILE_PATH_CHANGES GIT_COMMIT_ID NEW_TYPEDEFS STRCPY STRNCPY SYMBOLIC_PERMS
+cd .. && cpplint --recursive src/ tests/ checker/

@@ -4,9 +4,9 @@
 #include <internal/syscall.h>
 #include <stdarg.h>
 #include <errno.h>
+#include <internal/arch/x86_64/syscall_list.h>
 
 int close(int fd)
 {
-	/* TODO: Implement close(). */
-	return -1;
+	return syscall(__NR_close, fd);
 }
