@@ -29,6 +29,43 @@ Ca sa recapete controlul exista 2 metode:
 Concurenta este de asemenea o problema: ce se intampla atunci cand in timpul unui syscall apare un timmer interupt?  
 Pentru astfel de probleme exista diferite mecanisme de sincronizare.
 
+## Scheduler
+### Notiuni generale
+Exista 2 tipuri de analizare a unui scheduler:
+* performanta - se realizeaza prin calulul turnaround-ului
+* fairness - toate procesele sa ruleze la fel de mult pe procesor
+
+Pentru a spori performanta procesele cu timp scurt de executie trebuie sa ruleze inaintea celor cu timp ridicat de executie.
+
+Exista 2 tipuri de scheduler:
+* `non-preemptive scheduler` - lasa un proces sa ruleze pana la finalizarea sa
+* `preemptive scheduler` - face context switch-uri pentru a lasa un alt proces sa ruleze pe procesor
+
+Tipuri de metrici:
+* `turnaround` 
+	* T_turnaround = T_completition - T_arrival;
+	* bun pentru performanta bruta a sistemului
+* `response time`
+	* T_response = T_firstrun - T_arrival (T_fristrun = momentul in care a rulat pe CPU; T_arrival = momentul in care a inceput procesul)ș
+	* bun pentru interactivitate (e.g. daca suntem in terminal si tastam ceva nu am vrea sa asteptam 10 secunde pentru ca alte procese au fost scheduled inaintea noastra)
+
+## Scheduling algorithms
+
+### FIFO
+Foloseste principiul unei cozi: procesele ruleaza in ordinea in care au ajuns in coada. Nu tine 
+de performante.
+
+### Shortest Job First (SJF)
+Turnaround-ul beneficiaza de pe urma faptului ca daca rulezi procese ce au un timp redus de rulare, turnaround-ul va beneficia major din cauza acestui lucru.  
+Nu tine cont de faptul ca la inceput poate veni un proces cu timp mare, iar pe parcurs sa apara procese cu un timp redus, astfel turnaround-ul beneficiind daca acestea ar rula primele.
+
+### Shortest Time-to-Completition First (STCF)
+La fel ca si **SJF** insa tine cont ca pot sa ajunga procese cu timp de execuitie mai mic, astfel acesta oprind procesul initial din rulare si punandu-l pe celalalt cu timp mai scurt care a ajuns (context switch)
+
+### Round Robin Algorithm (RR)
+Acesta algoritm se bazeaza pe setarea unui time slice fiecarui proces. Cu cat time slice ul este mai mic, performantele sunt mai bune, insa este de luat in considerare si costul unui context-switch.  
+Acest algoritm incearca sa rezolve problema response time-ului, insa nu este ideal pentru turnaround.
+
 
 ## Notes from the book
  * In early (or simple) operating systems, the loading process is done eagerly, i.e., all at once before running the program; modern OSes perform the process lazily, i.e., by loading pieces of code or data only as they are
