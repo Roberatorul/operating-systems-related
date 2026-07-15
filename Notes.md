@@ -32,22 +32,22 @@ Pentru astfel de probleme exista diferite mecanisme de sincronizare.
 ## Scheduler
 ### Notiuni generale
 Exista 2 tipuri de analizare a unui scheduler:
-* performanta - se realizeaza prin calulul turnaround-ului
-* fairness - toate procesele sa ruleze la fel de mult pe procesor
+ * performanta - se realizeaza prin calulul turnaround-ului
+ * fairness - toate procesele sa ruleze la fel de mult pe procesor
 
 Pentru a spori performanta procesele cu timp scurt de executie trebuie sa ruleze inaintea celor cu timp ridicat de executie.
 
 Exista 2 tipuri de scheduler:
-* `non-preemptive scheduler` - lasa un proces sa ruleze pana la finalizarea sa
-* `preemptive scheduler` - face context switch-uri pentru a lasa un alt proces sa ruleze pe procesor
+ * `non-preemptive scheduler` - lasa un proces sa ruleze pana la finalizarea sa
+ * `preemptive scheduler` - face context switch-uri pentru a lasa un alt proces sa ruleze pe procesor
 
 Tipuri de metrici:
-* `turnaround` 
-	* T_turnaround = T_completition - T_arrival;
-	* bun pentru performanta bruta a sistemului
-* `response time`
-	* T_response = T_firstrun - T_arrival (T_fristrun = momentul in care a rulat pe CPU; T_arrival = momentul in care a inceput procesul)ș
-	* bun pentru interactivitate (e.g. daca suntem in terminal si tastam ceva nu am vrea sa asteptam 10 secunde pentru ca alte procese au fost scheduled inaintea noastra)
+ * `turnaround` 
+	 * T_turnaround = T_completition - T_arrival;
+	 * bun pentru performanta bruta a sistemului
+ * `response time`
+	 * T_response = T_firstrun - T_arrival (T_fristrun = momentul in care a rulat pe CPU; T_arrival = momentul in care a inceput procesul)ș
+	 * bun pentru interactivitate (e.g. daca suntem in terminal si tastam ceva nu am vrea sa asteptam 10 secunde pentru ca alte procese au fost scheduled inaintea noastra)
 
 ## Scheduling algorithms
 
@@ -70,17 +70,31 @@ Acest algoritm incearca sa rezolve problema response time-ului, insa nu este ide
 
 ### Multi-Level Feedback Queue (MLFQ)
 Este alcatuit din mai multe cozi (fiecare coada avand cate o prioritate). Procesele sunt puse in aceste cozi. Exista 2 mecanisme:
-* if priority(A) > priority(B) => A runs (B doesn't)
-* if priority(A) == priority(B) => A & B run in RR
+ * if priority(A) > priority(B) => A runs (B doesn't)
+ * if priority(A) == priority(B) => A & B run in RR
 
 Scheduler-ul "invata" pe parcurs cum ar trebui sa se ocupe de procese:
-* daca un proces este **I/O intensive**, acesta primeste o prioritate mare deoarece oricum va lasa procesorul atunci cand face operatii blocante
-* daca un proces este **CPU intensive**, atunci acest primeste o prioritate redusa
+ * daca un proces este **I/O intensive**, acesta primeste o prioritate mare deoarece oricum va lasa procesorul atunci cand face operatii blocante
+ * daca un proces este **CPU intensive**, atunci acest primeste o prioritate redusa
 
 Aceasta metoda ofera unui nou proces prioritate maxima atunci cand sosete, iar cu timpul, cat acesta ruleaza pe procesor, prioritatea sa incepe sa fie scazuta, cazand pe cozile inferioare.  
 Daca un proces realizeaza o operatie blocanta inainte de a i se duce `allotment-ul`, acesta ramane pe acelasi nivel, insa nu i se reseteaza allotment-ul. Acest ultim lucru previne notiunea de `gaming the scheduler` (daca dupa fiecare operatie I/O i s ar reseta, atunci cineva ar putea face operatii I/O pentru a isi pastra locul sus in coada).  
 Pentru a oferi proceselor de pe nivelele inferioare o sansa la a rula pe CPU (daca pe sistem apar prea multe procese interactive ar putea bloca de tot procesele de pe nivelele inferioare), la o anumita perioada de timp S (in majoritatea cazurilor este determinata de administratorul de sistem sau pe baza tehnicilor de ML) toate procesele sunt mutatea pe cea mai de sus coada. Acest lucuru ofera o sansa si proceselor CPU intensive de a mai rula pe procesor. 
 > [!NOTE] Parametrii acestei cozi (nr de cozi, time slice urile pentru fiecare, perioada S) sunt variabile. Pentru mai multe detalii si eventuale alte implementari vezi capitolul 8.5 din carte.
+
+### Proportional Share
+Acesta se bazeaza pe `fairness-ul` dintre procese, nu pe turnaround sau pe response time. La baza, fiecarui proces i se aloca un numar de tickete.  
+Metode de scheduling:
+ *  `lottery scheduling`
+	 * e.g.: procesul A are ticketele de la 0 la 75, iar B de la 76 la 99. Se alege un numar random iar apoi procesul ce contine ticket-ul cu numarul respectiv ruleaza pe procesor
+ * `stride scheduling`
+	 * sa zicem ca avem procesele A (100 tickets), B (50 tickets) si C (250 tickets)
+	 * alegem o valoare mare, e.g. 10_000
+	 * obtinem **stride value-urile:** A(100), B(200), C(40)
+	 * la inceput, fiecare proces are un **pass value** setat la 0, astfel orice proces poate incepe; sa zicem ca incepe A. Dupa aceea A->pass devine 100, dupa pe aceeasi logica ruleaza B si C cu B->pass = 200 si C->pass = 40. Apoi este ales procesul cu pass-ul cel mai mic, adica C, si acesta este rulat din nou, iar apoi procesul contiuna
+	 * **!Problema:** Daca in joc apare un nou proces, pass-ul acestuia este 0, deci acesta ar rula mult pe procesor, tinand cont ca celelalte procese deja ruleaza de ceva timp
+ * `Linux Completely Fair Scheduler`
+	 * **Chapther 9.2 from the book**
 
 ## Notes from the book
  * In early (or simple) operating systems, the loading process is done eagerly, i.e., all at once before running the program; modern OSes perform the process lazily, i.e., by loading pieces of code or data only as they are
