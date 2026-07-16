@@ -6,7 +6,7 @@
 
 int main(int argc, char* argv[]) {
 	if (argc != 3) {
-		fprintf(stderr, "Usage: %s <num_of_mega_bytes> <num_itterations>", argv[0]);
+		fprintf(stderr, "Usage: %s <num_of_mega_bytes> <num_itterations>\n", argv[0]);
 		return EXIT_FAILURE;
 	}
 
