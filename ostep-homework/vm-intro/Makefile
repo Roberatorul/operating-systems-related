@@ -7,4 +7,4 @@ memory-user: memory-user.c
 clean:
 	rm -f memory-user
 
-.PHONY: all clean
+.PHONY: clean
