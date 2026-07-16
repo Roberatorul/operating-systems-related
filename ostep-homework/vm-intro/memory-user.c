@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
 
 	size_t num_bytes = atoll(argv[1]) * MB_TO_BYTES; 
 	size_t num_itterations = atoi(argv[2]);
-
+	sleep(5); // to use pmap before and after allocating memory
 	char* vec = malloc(num_bytes);
 	if (vec == NULL) {
 		fprintf(stderr, "malloc failed\n");
