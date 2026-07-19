@@ -1,4 +1,4 @@
-# Notite
+# CPU virtualization
 
 ## Memory
 `volatile memory` - RAM-ul: este o memorie rapida insa atunci cand se opreste curentul se pierd datele  
@@ -95,6 +95,28 @@ Metode de scheduling:
 	 * **!Problema:** Daca in joc apare un nou proces, pass-ul acestuia este 0, deci acesta ar rula mult pe procesor, tinand cont ca celelalte procese deja ruleaza de ceva timp
  * `Linux Completely Fair Scheduler`
 	 * **Chapther 9.2 from the book**
+
+# Memory Virtualization
+ * `external fragmentation` - se refera la conceptul in care desi exista spatiu total in memorie pentru o alocare, alocarea nu poate fi facuta pentru ca acel spatiu liber nu este continuu
+ * `internal fragmentation` - deoarece memoria este impartita in pagine de (obicei) 4KB, desi tu ceri sistemului de operare doar 6kb, acesta iti va oferi 2 pagini, adica un total de 8KB
+
+Interesting chapters:
+ * `Chapter 17. Free Space Management` - discusses memory allocators (free list)
+
+## Paging
+Pe un sistem de 64 de biti avem:
+```bash
++-----------------------------------------------------+
+virtual page number(52 bits)        | offset (12 bits)
++-----------------------------------------------------+
+
+offset = la al catelea byte din pagina se afla adresa cautata
+virtual page number = nr. paginii la care facem referire
+
+In realitate s-ar putea folosi doar 48 sau 57 de biti din virtual page number, restul fiind folositi de sistemul de operare pentru altceva.
+
+Cand se face translatarea, VPN este singurul translatat in memorie reala, offset-ul ramanand acelasi.
+```
 
 ## Notes from the book
  * In early (or simple) operating systems, the loading process is done eagerly, i.e., all at once before running the program; modern OSes perform the process lazily, i.e., by loading pieces of code or data only as they are
