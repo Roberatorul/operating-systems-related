@@ -1,0 +1,798 @@
+Running with 2 pages and 2 trials
+Average time per access: 500.000000 ns
+
+Running with 2 pages and 4 trials
+Average time per access: 375.000000 ns
+
+Running with 2 pages and 8 trials
+Average time per access: 125.000000 ns
+
+Running with 2 pages and 16 trials
+Average time per access: 93.750000 ns
+
+Running with 2 pages and 32 trials
+Average time per access: 46.875000 ns
+
+Running with 2 pages and 64 trials
+Average time per access: 31.250000 ns
+
+Running with 2 pages and 128 trials
+Average time per access: 15.625000 ns
+
+Running with 2 pages and 256 trials
+Average time per access: 11.718750 ns
+
+Running with 2 pages and 512 trials
+Average time per access: 3.906250 ns
+
+Running with 2 pages and 1024 trials
+Average time per access: 6.347656 ns
+
+Running with 2 pages and 2048 trials
+Average time per access: 2.685547 ns
+
+Running with 2 pages and 4096 trials
+Average time per access: 2.441406 ns
+
+Running with 2 pages and 8192 trials
+Average time per access: 2.258301 ns
+
+Running with 2 pages and 16384 trials
+Average time per access: 2.288818 ns
+
+Running with 2 pages and 32768 trials
+Average time per access: 2.120972 ns
+
+Running with 2 pages and 65536 trials
+Average time per access: 2.120972 ns
+
+Running with 2 pages and 131072 trials
+Average time per access: 2.189636 ns
+
+Running with 2 pages and 262144 trials
+Average time per access: 2.262115 ns
+
+Running with 2 pages and 524288 trials
+Average time per access: 2.086639 ns
+
+Running with 4 pages and 2 trials
+Average time per access: 1000.000000 ns
+
+Running with 4 pages and 4 trials
+Average time per access: 437.500000 ns
+
+Running with 4 pages and 8 trials
+Average time per access: 250.000000 ns
+
+Running with 4 pages and 16 trials
+Average time per access: 109.375000 ns
+
+Running with 4 pages and 32 trials
+Average time per access: 62.500000 ns
+
+Running with 4 pages and 64 trials
+Average time per access: 27.343750 ns
+
+Running with 4 pages and 128 trials
+Average time per access: 15.625000 ns
+
+Running with 4 pages and 256 trials
+Average time per access: 8.789062 ns
+
+Running with 4 pages and 512 trials
+Average time per access: 5.859375 ns
+
+Running with 4 pages and 1024 trials
+Average time per access: 3.662109 ns
+
+Running with 4 pages and 2048 trials
+Average time per access: 2.929688 ns
+
+Running with 4 pages and 4096 trials
+Average time per access: 2.380371 ns
+
+Running with 4 pages and 8192 trials
+Average time per access: 2.136230 ns
+
+Running with 4 pages and 16384 trials
+Average time per access: 2.029419 ns
+
+Running with 4 pages and 32768 trials
+Average time per access: 1.976013 ns
+
+Running with 4 pages and 65536 trials
+Average time per access: 1.972198 ns
+
+Running with 4 pages and 131072 trials
+Average time per access: 1.937866 ns
+
+Running with 4 pages and 262144 trials
+Average time per access: 1.957893 ns
+
+Running with 4 pages and 524288 trials
+Average time per access: 2.062798 ns
+
+Running with 8 pages and 2 trials
+Average time per access: 1125.000000 ns
+
+Running with 8 pages and 4 trials
+Average time per access: 500.000000 ns
+
+Running with 8 pages and 8 trials
+Average time per access: 250.000000 ns
+
+Running with 8 pages and 16 trials
+Average time per access: 125.000000 ns
+
+Running with 8 pages and 32 trials
+Average time per access: 66.406250 ns
+
+Running with 8 pages and 64 trials
+Average time per access: 35.156250 ns
+
+Running with 8 pages and 128 trials
+Average time per access: 17.578125 ns
+
+Running with 8 pages and 256 trials
+Average time per access: 10.742188 ns
+
+Running with 8 pages and 512 trials
+Average time per access: 6.103516 ns
+
+Running with 8 pages and 1024 trials
+Average time per access: 4.028320 ns
+
+Running with 8 pages and 2048 trials
+Average time per access: 3.051758 ns
+
+Running with 8 pages and 4096 trials
+Average time per access: 2.563477 ns
+
+Running with 8 pages and 8192 trials
+Average time per access: 2.410889 ns
+
+Running with 8 pages and 16384 trials
+Average time per access: 2.189636 ns
+
+Running with 8 pages and 32768 trials
+Average time per access: 2.269745 ns
+
+Running with 8 pages and 65536 trials
+Average time per access: 2.147675 ns
+
+Running with 8 pages and 131072 trials
+Average time per access: 2.323151 ns
+
+Running with 8 pages and 262144 trials
+Average time per access: 2.130985 ns
+
+Running with 8 pages and 524288 trials
+Average time per access: 2.159595 ns
+
+Running with 16 pages and 2 trials
+Average time per access: 1250.000000 ns
+
+Running with 16 pages and 4 trials
+Average time per access: 546.875000 ns
+
+Running with 16 pages and 8 trials
+Average time per access: 296.875000 ns
+
+Running with 16 pages and 16 trials
+Average time per access: 136.718750 ns
+
+Running with 16 pages and 32 trials
+Average time per access: 72.265625 ns
+
+Running with 16 pages and 64 trials
+Average time per access: 39.062500 ns
+
+Running with 16 pages and 128 trials
+Average time per access: 18.554688 ns
+
+Running with 16 pages and 256 trials
+Average time per access: 11.718750 ns
+
+Running with 16 pages and 512 trials
+Average time per access: 7.446289 ns
+
+Running with 16 pages and 1024 trials
+Average time per access: 4.516602 ns
+
+Running with 16 pages and 2048 trials
+Average time per access: 3.631592 ns
+
+Running with 16 pages and 4096 trials
+Average time per access: 2.975464 ns
+
+Running with 16 pages and 8192 trials
+Average time per access: 2.738953 ns
+
+Running with 16 pages and 16384 trials
+Average time per access: 2.655029 ns
+
+Running with 16 pages and 32768 trials
+Average time per access: 2.563477 ns
+
+Running with 16 pages and 65536 trials
+Average time per access: 2.496719 ns
+
+Running with 16 pages and 131072 trials
+Average time per access: 2.519608 ns
+
+Running with 16 pages and 262144 trials
+Average time per access: 2.806187 ns
+
+Running with 16 pages and 524288 trials
+Average time per access: 2.502799 ns
+
+Running with 32 pages and 2 trials
+Average time per access: 1187.500000 ns
+
+Running with 32 pages and 4 trials
+Average time per access: 617.187500 ns
+
+Running with 32 pages and 8 trials
+Average time per access: 304.687500 ns
+
+Running with 32 pages and 16 trials
+Average time per access: 152.343750 ns
+
+Running with 32 pages and 32 trials
+Average time per access: 77.148438 ns
+
+Running with 32 pages and 64 trials
+Average time per access: 39.550781 ns
+
+Running with 32 pages and 128 trials
+Average time per access: 22.216797 ns
+
+Running with 32 pages and 256 trials
+Average time per access: 11.962891 ns
+
+Running with 32 pages and 512 trials
+Average time per access: 7.263184 ns
+
+Running with 32 pages and 1024 trials
+Average time per access: 4.882812 ns
+
+Running with 32 pages and 2048 trials
+Average time per access: 3.784180 ns
+
+Running with 32 pages and 4096 trials
+Average time per access: 3.181458 ns
+
+Running with 32 pages and 8192 trials
+Average time per access: 3.036499 ns
+
+Running with 32 pages and 16384 trials
+Average time per access: 2.788544 ns
+
+Running with 32 pages and 32768 trials
+Average time per access: 2.940178 ns
+
+Running with 32 pages and 65536 trials
+Average time per access: 2.682209 ns
+
+Running with 32 pages and 131072 trials
+Average time per access: 2.669096 ns
+
+Running with 32 pages and 262144 trials
+Average time per access: 2.646446 ns
+
+Running with 32 pages and 524288 trials
+Average time per access: 2.836406 ns
+
+Running with 64 pages and 2 trials
+Average time per access: 1242.187500 ns
+
+Running with 64 pages and 4 trials
+Average time per access: 628.906250 ns
+
+Running with 64 pages and 8 trials
+Average time per access: 320.312500 ns
+
+Running with 64 pages and 16 trials
+Average time per access: 158.203125 ns
+
+Running with 64 pages and 32 trials
+Average time per access: 80.078125 ns
+
+Running with 64 pages and 64 trials
+Average time per access: 41.748047 ns
+
+Running with 64 pages and 128 trials
+Average time per access: 22.094727 ns
+
+Running with 64 pages and 256 trials
+Average time per access: 12.207031 ns
+
+Running with 64 pages and 512 trials
+Average time per access: 7.293701 ns
+
+Running with 64 pages and 1024 trials
+Average time per access: 5.172729 ns
+
+Running with 64 pages and 2048 trials
+Average time per access: 3.944397 ns
+
+Running with 64 pages and 4096 trials
+Average time per access: 3.314972 ns
+
+Running with 64 pages and 8192 trials
+Average time per access: 3.053665 ns
+
+Running with 64 pages and 16384 trials
+Average time per access: 2.928734 ns
+
+Running with 64 pages and 32768 trials
+Average time per access: 2.781868 ns
+
+Running with 64 pages and 65536 trials
+Average time per access: 2.837658 ns
+
+Running with 64 pages and 131072 trials
+Average time per access: 2.739429 ns
+
+Running with 64 pages and 262144 trials
+Average time per access: 2.777398 ns
+
+Running with 64 pages and 524288 trials
+Average time per access: 2.793401 ns
+
+Running with 128 pages and 2 trials
+Average time per access: 1371.093750 ns
+
+Running with 128 pages and 4 trials
+Average time per access: 621.093750 ns
+
+Running with 128 pages and 8 trials
+Average time per access: 325.195312 ns
+
+Running with 128 pages and 16 trials
+Average time per access: 156.250000 ns
+
+Running with 128 pages and 32 trials
+Average time per access: 76.416016 ns
+
+Running with 128 pages and 64 trials
+Average time per access: 38.940430 ns
+
+Running with 128 pages and 128 trials
+Average time per access: 21.606445 ns
+
+Running with 128 pages and 256 trials
+Average time per access: 12.847900 ns
+
+Running with 128 pages and 512 trials
+Average time per access: 7.781982 ns
+
+Running with 128 pages and 1024 trials
+Average time per access: 5.409241 ns
+
+Running with 128 pages and 2048 trials
+Average time per access: 4.241943 ns
+
+Running with 128 pages and 4096 trials
+Average time per access: 3.608704 ns
+
+Running with 128 pages and 8192 trials
+Average time per access: 3.290176 ns
+
+Running with 128 pages and 16384 trials
+Average time per access: 3.233433 ns
+
+Running with 128 pages and 32768 trials
+Average time per access: 3.306150 ns
+
+Running with 128 pages and 65536 trials
+Average time per access: 3.226638 ns
+
+Running with 128 pages and 131072 trials
+Average time per access: 3.048897 ns
+
+Running with 128 pages and 262144 trials
+Average time per access: -17.277986 ns
+
+Running with 128 pages and 524288 trials
+Average time per access: 3.029123 ns
+
+Running with 256 pages and 2 trials
+Average time per access: 1244.140625 ns
+
+Running with 256 pages and 4 trials
+Average time per access: 647.460938 ns
+
+Running with 256 pages and 8 trials
+Average time per access: 299.316406 ns
+
+Running with 256 pages and 16 trials
+Average time per access: 161.132812 ns
+
+Running with 256 pages and 32 trials
+Average time per access: 79.101562 ns
+
+Running with 256 pages and 64 trials
+Average time per access: 43.457031 ns
+
+Running with 256 pages and 128 trials
+Average time per access: 25.451660 ns
+
+Running with 256 pages and 256 trials
+Average time per access: 12.924194 ns
+
+Running with 256 pages and 512 trials
+Average time per access: 8.438110 ns
+
+Running with 256 pages and 1024 trials
+Average time per access: 5.474091 ns
+
+Running with 256 pages and 2048 trials
+Average time per access: 4.175186 ns
+
+Running with 256 pages and 4096 trials
+Average time per access: 3.662109 ns
+
+Running with 256 pages and 8192 trials
+Average time per access: 3.392220 ns
+
+Running with 256 pages and 16384 trials
+Average time per access: 3.209829 ns
+
+Running with 256 pages and 32768 trials
+Average time per access: 3.474593 ns
+
+Running with 256 pages and 65536 trials
+Average time per access: 3.045857 ns
+
+Running with 256 pages and 131072 trials
+Average time per access: 3.169835 ns
+
+Running with 256 pages and 262144 trials
+Average time per access: 3.108561 ns
+
+Running with 256 pages and 524288 trials
+Average time per access: 3.096543 ns
+
+Running with 512 pages and 2 trials
+Average time per access: 1261.718750 ns
+
+Running with 512 pages and 4 trials
+Average time per access: 572.753906 ns
+
+Running with 512 pages and 8 trials
+Average time per access: 328.857422 ns
+
+Running with 512 pages and 16 trials
+Average time per access: 149.536133 ns
+
+Running with 512 pages and 32 trials
+Average time per access: 77.758789 ns
+
+Running with 512 pages and 64 trials
+Average time per access: 39.825439 ns
+
+Running with 512 pages and 128 trials
+Average time per access: 22.247314 ns
+
+Running with 512 pages and 256 trials
+Average time per access: 12.809753 ns
+
+Running with 512 pages and 512 trials
+Average time per access: 7.781982 ns
+
+Running with 512 pages and 1024 trials
+Average time per access: 5.456924 ns
+
+Running with 512 pages and 2048 trials
+Average time per access: 4.134178 ns
+
+Running with 512 pages and 4096 trials
+Average time per access: 3.742695 ns
+
+Running with 512 pages and 8192 trials
+Average time per access: 3.333807 ns
+
+Running with 512 pages and 16384 trials
+Average time per access: 3.128886 ns
+
+Running with 512 pages and 32768 trials
+Average time per access: 3.171146 ns
+
+Running with 512 pages and 65536 trials
+Average time per access: 3.073066 ns
+
+Running with 512 pages and 131072 trials
+Average time per access: 3.117651 ns
+
+Running with 512 pages and 262144 trials
+Average time per access: 3.067821 ns
+
+Running with 512 pages and 524288 trials
+Average time per access: 3.096491 ns
+
+Running with 1024 pages and 2 trials
+Average time per access: 1246.582031 ns
+
+Running with 1024 pages and 4 trials
+Average time per access: 649.902344 ns
+
+Running with 1024 pages and 8 trials
+Average time per access: 318.115234 ns
+
+Running with 1024 pages and 16 trials
+Average time per access: 156.982422 ns
+
+Running with 1024 pages and 32 trials
+Average time per access: 78.613281 ns
+
+Running with 1024 pages and 64 trials
+Average time per access: 39.550781 ns
+
+Running with 1024 pages and 128 trials
+Average time per access: 21.591187 ns
+
+Running with 1024 pages and 256 trials
+Average time per access: 12.264252 ns
+
+Running with 1024 pages and 512 trials
+Average time per access: 7.492065 ns
+
+Running with 1024 pages and 1024 trials
+Average time per access: 5.746841 ns
+
+Running with 1024 pages and 2048 trials
+Average time per access: 4.146099 ns
+
+Running with 1024 pages and 4096 trials
+Average time per access: 3.679276 ns
+
+Running with 1024 pages and 8192 trials
+Average time per access: 3.354311 ns
+
+Running with 1024 pages and 16384 trials
+Average time per access: 3.261149 ns
+
+Running with 1024 pages and 32768 trials
+Average time per access: 3.239423 ns
+
+Running with 1024 pages and 65536 trials
+Average time per access: 3.083378 ns
+
+Running with 1024 pages and 131072 trials
+Average time per access: 2.973691 ns
+
+Running with 1024 pages and 262144 trials
+Average time per access: 3.020257 ns
+
+Running with 1024 pages and 524288 trials
+Average time per access: 3.018120 ns
+
+Running with 2048 pages and 2 trials
+Average time per access: 1225.830078 ns
+
+Running with 2048 pages and 4 trials
+Average time per access: 610.351562 ns
+
+Running with 2048 pages and 8 trials
+Average time per access: 303.710938 ns
+
+Running with 2048 pages and 16 trials
+Average time per access: 153.961182 ns
+
+Running with 2048 pages and 32 trials
+Average time per access: 80.337524 ns
+
+Running with 2048 pages and 64 trials
+Average time per access: 42.266846 ns
+
+Running with 2048 pages and 128 trials
+Average time per access: 22.960663 ns
+
+Running with 2048 pages and 256 trials
+Average time per access: 13.984680 ns
+
+Running with 2048 pages and 512 trials
+Average time per access: 9.059906 ns
+
+Running with 2048 pages and 1024 trials
+Average time per access: 7.020950 ns
+
+Running with 2048 pages and 2048 trials
+Average time per access: 5.439520 ns
+
+Running with 2048 pages and 4096 trials
+Average time per access: 5.270004 ns
+
+Running with 2048 pages and 8192 trials
+Average time per access: 7.829010 ns
+
+Running with 2048 pages and 16384 trials
+Average time per access: 4.587144 ns
+
+Running with 2048 pages and 32768 trials
+Average time per access: 3.203198 ns
+
+Running with 2048 pages and 65536 trials
+Average time per access: 4.370995 ns
+
+Running with 2048 pages and 131072 trials
+Average time per access: 3.742166 ns
+
+Running with 2048 pages and 262144 trials
+Average time per access: 4.363222 ns
+
+Running with 2048 pages and 524288 trials
+Average time per access: 4.533652 ns
+
+Running with 4096 pages and 2 trials
+Average time per access: 1271.850586 ns
+
+Running with 4096 pages and 4 trials
+Average time per access: 630.981445 ns
+
+Running with 4096 pages and 8 trials
+Average time per access: 319.915771 ns
+
+Running with 4096 pages and 16 trials
+Average time per access: 164.047241 ns
+
+Running with 4096 pages and 32 trials
+Average time per access: 87.791443 ns
+
+Running with 4096 pages and 64 trials
+Average time per access: 49.335480 ns
+
+Running with 4096 pages and 128 trials
+Average time per access: 27.999878 ns
+
+Running with 4096 pages and 256 trials
+Average time per access: 19.454002 ns
+
+Running with 4096 pages and 512 trials
+Average time per access: 14.336109 ns
+
+Running with 4096 pages and 1024 trials
+Average time per access: 12.344122 ns
+
+Running with 4096 pages and 2048 trials
+Average time per access: 11.053205 ns
+
+Running with 4096 pages and 4096 trials
+Average time per access: 11.243165 ns
+
+Running with 4096 pages and 8192 trials
+Average time per access: 10.061800 ns
+
+Running with 4096 pages and 16384 trials
+Average time per access: 12.399241 ns
+
+Running with 4096 pages and 32768 trials
+Average time per access: 11.240646 ns
+
+Running with 4096 pages and 65536 trials
+Average time per access: 10.433935 ns
+
+Running with 4096 pages and 131072 trials
+Average time per access: 12.231825 ns
+
+Running with 4096 pages and 262144 trials
+Average time per access: 11.529270 ns
+
+Running with 4096 pages and 524288 trials
+Average time per access: 11.601625 ns
+
+Running with 8192 pages and 2 trials
+Average time per access: 1257.507324 ns
+
+Running with 8192 pages and 4 trials
+Average time per access: 642.578125 ns
+
+Running with 8192 pages and 8 trials
+Average time per access: 327.316284 ns
+
+Running with 8192 pages and 16 trials
+Average time per access: 167.510986 ns
+
+Running with 8192 pages and 32 trials
+Average time per access: 90.709686 ns
+
+Running with 8192 pages and 64 trials
+Average time per access: 53.903580 ns
+
+Running with 8192 pages and 128 trials
+Average time per access: 33.600807 ns
+
+Running with 8192 pages and 256 trials
+Average time per access: 26.130676 ns
+
+Running with 8192 pages and 512 trials
+Average time per access: 20.682096 ns
+
+Running with 8192 pages and 1024 trials
+Average time per access: 17.422915 ns
+
+Running with 8192 pages and 2048 trials
+Average time per access: 16.335011 ns
+
+Running with 8192 pages and 4096 trials
+Average time per access: 15.096337 ns
+
+Running with 8192 pages and 8192 trials
+Average time per access: 15.259102 ns
+
+Running with 8192 pages and 16384 trials
+Average time per access: 14.781408 ns
+
+Running with 8192 pages and 32768 trials
+Average time per access: 14.989149 ns
+
+Running with 8192 pages and 65536 trials
+Average time per access: 15.007652 ns
+
+Running with 8192 pages and 131072 trials
+Average time per access: 14.405168 ns
+
+Running with 8192 pages and 262144 trials
+Average time per access: 14.917527 ns
+
+Running with 8192 pages and 524288 trials
+Average time per access: 14.870824 ns
+
+Running with 16384 pages and 2 trials
+Average time per access: 1246.398926 ns
+
+Running with 16384 pages and 4 trials
+Average time per access: 628.799438 ns
+
+Running with 16384 pages and 8 trials
+Average time per access: 331.001282 ns
+
+Running with 16384 pages and 16 trials
+Average time per access: 168.170929 ns
+
+Running with 16384 pages and 32 trials
+Average time per access: 93.645096 ns
+
+Running with 16384 pages and 64 trials
+Average time per access: 53.104401 ns
+
+Running with 16384 pages and 128 trials
+Average time per access: 34.443855 ns
+
+Running with 16384 pages and 256 trials
+Average time per access: 24.947405 ns
+
+Running with 16384 pages and 512 trials
+Average time per access: 19.388318 ns
+
+Running with 16384 pages and 1024 trials
+Average time per access: 16.967714 ns
+
+Running with 16384 pages and 2048 trials
+Average time per access: 15.996069 ns
+
+Running with 16384 pages and 4096 trials
+Average time per access: 15.331969 ns
+
+Running with 16384 pages and 8192 trials
+Average time per access: 14.884889 ns
+
+Running with 16384 pages and 16384 trials
+Average time per access: 14.999758 ns
+
+Running with 16384 pages and 32768 trials
+Average time per access: 14.574002 ns
+
+Running with 16384 pages and 65536 trials
+Average time per access: 14.412316 ns
+
+Running with 16384 pages and 131072 trials
+Average time per access: 14.990881 ns
+
+Running with 16384 pages and 262144 trials
+Average time per access: 14.792644 ns
+
+Running with 16384 pages and 524288 trials
+Average time per access: 14.762986 ns
+
