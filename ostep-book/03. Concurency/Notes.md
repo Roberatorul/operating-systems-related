@@ -157,6 +157,9 @@ void mutex_unlock (int *mutex) {
 }
 ```
 
+## Locked data structures
+`Chapter 29` - liste, cozi si hash-table
+
 ## Notes from the book
  * A critical section is a piece of code that accesses a shared resource,
 usually a variable or data structure.
