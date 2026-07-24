@@ -158,7 +158,138 @@ void mutex_unlock (int *mutex) {
 ```
 
 ## Locked data structures
-`Chapter 29` - liste, cozi si hash-table
+`Chapter 29` - liste, cozi si hash-table  
+Vezi `ostep-homework/threads-locks-usage` pentru diferite implementari de structuri de date ce ruleaza pe mai multe thread-uri.
+
+## Condition variables
+Putem vedea `pthread_cond_t`, conceptual, ca o coada de asteptare pentru thread-uri. Un pseudo-cod pentru cum sunt folosite de obicei **variabilele conditionale** este:
+```c
+	int done = 0;
+T1:
+	pthread_mutex_t m = PTHREAD_MUTEX_INITIALIZER;
+	pthread_cond_t c = PTHREAD_COND_INITIALIZER;
+	pthread_mutex_lock(&m);
+	/* Cod */
+	while (done == 0)
+		pthread_cond_wait(&c, &m); /* Il adauga pe T1 intr-o coada de asteptare (face automat unlock la m) */
+
+T2 (in paralel):
+	/* Cod */
+	pthread_mutex_lock(&m);
+	done = 1;
+	pthread_cond_signal(&c);
+	pthread_mutex_unlock(&m);
+```
+
+### Exemplu de folosire a variabilelor conditionale 
+Sa zicem ca avem o pereche de thread-uri care scriu date intr-un buffer si o pereche de thread-uri care prelucreaza datele din buffer (eventual le scot dupa ce le prelucreaza). Pentrru acest scenariu o sa avem un lock principal (pentru buffer) si 2 variabile conditionale, numite c_plin si c_gol. O sa numim producatori thread-urile care baga date in buffer si consumatori pe cei care scot datele din buffer. Cand buffer-ul este plin, producatorii trebuie sa doarma, iar cand buffer-ul este gol consumatorii trebuie sa doarma. Pentru a rezolva asta avem:
+ * consumatorul adoarme cu wait(&c_gol, &m) - doarme in coada c_gol pana cand se da semnal de la cineva ca s-au pus date in buffer
+ * producatorul adoarme cu (&c_plin, &m) - doarme in coada c_plin pana cand se da semnal de la cineva ca s-a eliberat spatiu din buffer
+
+Daca un producator baga ceva in buffer, el va face signal(&c_gol), iar daca un consumator ia date din buffer, acesta va face signal(&c_plin).
+
+### `Producer/Consumer - Bounded Buffer Problem`
+> [NOTE!] Pentru un exemplu detaliat + cod vezi `Chapter 30 page 6`.
+
+Principala problema este ca **signal** trece starea unui thread din sleeping in ready, **NU** in running. De aici pot aparea diferite probleme de sincronizare intre un producator si mai multi consumatori.
+
+#### `The Single Buffer Producer/Consumer Solution:`
+```c
+int buffer;
+int count = 0; // initially, empty
+
+void put(int value) {
+	assert(count == 0);
+	count = 1;
+	buffer = value;
+}
+
+int get() {
+	assert(count == 1);
+	count = 0;
+	return buffer;
+}
+
+int loops; // must initialize somewhere...
+cond_t empty, fill;
+mutex_t mutex;
+
+void *producer(void *arg) {
+	int i;
+	for (i = 0; i < loops; i++) {
+		Pthread_mutex_lock(&mutex);
+		while (count == 1)
+			Pthread_cond_wait(&empty, &mutex);
+		put(i);
+		Pthread_cond_signal(&fill);
+		Pthread_mutex_unlock(&mutex);
+	}
+}
+void *consumer(void *arg) {
+	int i;
+	for (i = 0; i < loops; i++) {
+		Pthread_mutex_lock(&mutex);
+		while (count == 0)
+			Pthread_cond_wait(&fill, &mutex);
+		int tmp = get();
+		Pthread_cond_signal(&empty);
+		Pthread_mutex_unlock(&mutex);
+		printf("%d\n", tmp);
+	}
+}
+```
+> [NOTE!] Aceasta solutie rezolva 2 probleme: (1) faptul ca atunci cand se apeleaza signal(), procesul din coada este trecut din sleeping in ready (din (if count == val) in while (count == val)); (2) folosirea a 2 variabile conditionale, una pentru consumator si una pentru producator. Vezi `Chapter 30 page 6-13` pentru explicatii suplimentare la ce ar putea merge prost la implementarile de dinaintea acesteia.
+
+#### `The Single Buffer Producer/Consumer Solution (la modul general):`
+```c
+int buffer[MAX];
+int fill_ptr = 0;
+int use_ptr = 0;
+int count = 0;
+
+void put(int value) {
+	buffer[fill_ptr] = value;
+	fill_ptr = (fill_ptr + 1) % MAX;
+	count++;
+}
+int get() {
+	int tmp = buffer[use_ptr];
+	use_ptr = (use_ptr + 1) % MAX;
+	count--;
+	return tmp;
+}
+
+int loops; // must initialize somewhere...
+cond_t empty, fill;
+mutex_t mutex;
+
+void *producer(void *arg) {
+	int i;
+	for (i = 0; i < loops; i++) {
+		Pthread_mutex_lock(&mutex);
+		while (count == MAX)
+			Pthread_cond_wait(&empty, &mutex);
+		put(i);
+		Pthread_cond_signal(&fill);
+		Pthread_mutex_unlock(&mutex);
+		}
+}
+
+void *consumer(void *arg) {
+	int i;
+	for (i = 0; i < loops; i++) {
+		Pthread_mutex_lock(&mutex);
+		while (count == 0)
+			Pthread_cond_wait(&fill, &mutex);
+		int tmp = get();
+		Pthread_cond_signal(&empty);
+		Pthread_mutex_unlock(&mutex);
+		printf("%d\n", tmp);
+	}
+}
+```
+
+> [NOTE!] Exista si un apel de broadcast() ce trezeste mai multe thread-uri deodata, astfel rezolvand problema (2) descrisa in carte, insa overhead-ul poate fi unul mare.
 
 ## Notes from the book
  * A critical section is a piece of code that accesses a shared resource,
@@ -175,3 +306,11 @@ something we usually expect from computer systems.
 exclusion primitives; doing so guarantees that only a single thread
 ever enters a critical section, thus avoiding races, and resulting in
 deterministic program outputs.
+ * When checking for a condition in a multi-threaded program, using a
+while loop is always correct; using an if statement only might be, depending on the semantics of signaling. Thus, always use while and your
+code will behave as expected.
+Using while loops around conditional checks also handles the case where
+spurious wakeups occur. In some thread packages, due to details of the
+implementation, it is possible that two threads get woken up though just
+a single signal has taken place [L11]. Spurious wakeups are further reason
+to re-check the condition a thread is waiting on.

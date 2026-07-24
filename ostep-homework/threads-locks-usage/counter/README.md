@@ -17,3 +17,7 @@ python3 plot_results.py # script generat
 # una pentru timpul de rulare al fiecarui program si
 # una pentru acuratetea rezultatelor (in mare pentru varianta sloppy)
 ```
+
+# Grafice
+Primul grafic arata performantele de timp pe care fiecare metoda le area, iar cel de al 2-lea arata acuratetea fiecarei metode (daca a ajuns la rezultatul asteptata).
+> [NOTE!] Singura metoda care nu ruleaza pe mai multe thread-rui este cea seriala, astfel in grafice cand este crescut nr de thread-uri, pentru acea implementare nu inseamna nimic deoarece ea ruleaza pe un singur thread, axa Ox de thread-uri fiind pentru celelalte metode
