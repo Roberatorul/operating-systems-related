@@ -314,3 +314,14 @@ spurious wakeups occur. In some thread packages, due to details of the
 implementation, it is possible that two threads get woken up though just
 a single signal has taken place [L11]. Spurious wakeups are further reason
 to re-check the condition a thread is waiting on.
+ * We’ve now seen two examples of initializing a semaphore. In the first
+case, we set the value to 1 to use the semaphore as a lock; in the second,
+to 0, to use the semaphore for ordering. So what’s the general rule for
+semaphore initialization?
+One simple way to think about it, thanks to Perry Kivolowitz, is to consider the number of resources you are willing to give away immediately
+after initialization. With the lock, it was 1, because you are willing to
+have the lock locked (given away) immediately after initialization. With
+the ordering case, it was 0, because there is nothing to give away at the
+start; only when the child thread is done is the resource created, at which
+point, the value is incremented to 1. Try this line of thinking on future
+semaphore problems, and see if it helps.
