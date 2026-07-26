@@ -291,6 +291,67 @@ void *consumer(void *arg) {
 
 > [NOTE!] Exista si un apel de broadcast() ce trezeste mai multe thread-uri deodata, astfel rezolvand problema (2) descrisa in carte, insa overhead-ul poate fi unul mare.
 
+## Semaphores
+Putem vedea apelurile sem_wait() si sem_post() astfel:
+```c
+int sem_wait(sem_t *s) {
+	decrement the value of semaphore s by one
+	wait if value of semaphore s is negative
+}
+
+int sem_post(sem_t *s) {
+	increment the value of semaphore s by one
+	if there are one or more threads waiting, wake one
+}
+```
+
+### `The Single Buffer Producer/Consumer Solution (folosind semafoare):`
+```c
+int buffer[MAX];
+int fill = 0;
+int use = 0;
+
+/* Pentru modularitate ar fi indicat ca mutex sa
+ fie inclus in functiile de put() si get() */
+void put(int value) {
+	buffer[fill] = value;
+	fill = (fill + 1) % MAX;
+}
+
+int get() {
+	int tmp = buffer[use];
+	use = (use + 1) % MAX;
+	return tmp;
+}
+
+	void *producer(void *arg) {
+	int i;
+	for (i = 0; i < loops; i++) {
+		sem_wait(&empty);
+		sem_wait(&mutex);
+		put(i);
+		sem_post(&full);
+		sem_post(&mutex);
+	}
+}
+
+void *consumer(void *arg) {
+	int i;
+	for (i = 0; i < loops; i++) {
+		sem_wait(&mutex);
+		sem_wait(&full);
+		int tmp = get();
+		sem_post(&empty);
+		sem_post(&mutex);
+		printf("%d\n", tmp);
+	}
+}
+```
+
+## TODO homeworks
+- [] `Chapter 29`
+- [] `Chapter 31`
+
 ## Notes from the book
  * A critical section is a piece of code that accesses a shared resource,
 usually a variable or data structure.

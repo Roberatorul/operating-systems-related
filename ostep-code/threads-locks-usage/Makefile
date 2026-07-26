@@ -9,4 +9,4 @@ approximate-counter: approximate-counter.c
 clean:
 	rm -rf approximate-counter results.csv
 
-.PHONY: all, clean
+.PHONY: all clean
