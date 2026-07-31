@@ -49,7 +49,7 @@ Tipuri de metrici:
 	 * T_response = T_firstrun - T_arrival (T_fristrun = momentul in care a rulat pe CPU; T_arrival = momentul in care a inceput procesul)ș
 	 * bun pentru interactivitate (e.g. daca suntem in terminal si tastam ceva nu am vrea sa asteptam 10 secunde pentru ca alte procese au fost scheduled inaintea noastra)
 
-## Scheduling algorithms
+## Scheduling algorithms (for a single CPU)
 
 ### FIFO
 Foloseste principiul unei cozi: procesele ruleaza in ordinea in care au ajuns in coada. Nu tine 
@@ -95,6 +95,51 @@ Metode de scheduling:
 	 * **!Problema:** Daca in joc apare un nou proces, pass-ul acestuia este 0, deci acesta ar rula mult pe procesor, tinand cont ca celelalte procese deja ruleaza de ceva timp
  * `Linux Completely Fair Scheduler`
 	 * **Chapther 9.2 from the book**
+
+## Sincronizarea mai multor procesoare
+Termeni intalniti pentru mecanismul de caching:
+ * `temporal locality` - e.g.: pentru o variabila accesata recent se presupune ca aceasta urmeaza sa fie accesata din nou intr-o perioada scurta de timp (de exemplu i-ul dintr-o bucla for), asa ca aceasta este salvata in cache
+ * `spatial locality` - e.g.: pentru un element dintr-un vector se presupune ca vom avea nevoie si de celelalte elemente din apropierea sa, asa ca se incarca mai multe elemente din vector in cache, nu doar elementul pe care l-am accesat
+ * `cache coherence` - se refera la modul in care se rezolva problema cache-ul diferit a unor procesoare; daca un thread1 de pe CPU1 modifica o valoare v pe care o are in memorie (variabila pe care o are salvata si thread2 de pe CPU2 in cache), datorita magistralei imbinate pe care acestea comunica, cand se aduce o modificare variabilei v, cache-ul lui CPU2 poate fi anuntat sa isi modifice valoarea, fie sa o scoata din cache (explicatie minimala) 
+```bash
+=================				=================
+|	  CPU1		|				|	  CPU2		|
+=================				=================
+|	  Cache		|				|	  Cache		|
+=================				=================
+		|								|
+		|								|
+		|_______________________________|
+						|
+						|
+						|
+			   =====================
+			   |	  Memory	   |
+			   =====================
+```
+ * `cache afinity` - se refera la faptul ca atunci cand facem un context switch pentru diferite thread-uril ale diferitor procesoare pe care le avem, TLB-ul va fi curatat, fapt ce reduce performanta programului
+
+## Scheduling algorithms (for multiple CPUs)
+
+### Single-Queue Scheduling (SQMS - single-queue multiprocessor scheduling)
+ * pune toate thread-urile intr-o coada de asteptare de executie (la fel ca la **FIFO**)
+ * are probleme de **cache afinity** deoarece thread-urile pot rula de diferite procesoare; se poate optimiza acest lucru prin rularea de thread-uri inrudite pe acelasi procesor, reducand TLB flush-ul, insa aceasta implementare poate deveni complicata
+
+### Multi-Queue Scheduling (MQMS - multi-queue multiprocessor scheduling)
+ * asemanator cu metoda de mai sus, doar ca apar mai multe cozi; thread-urile care ruleaza sunt impartite pentru fiecare coada in parte, astfel eliminand problema **cache afinity-ului**
+ * algoritmul de scheduling pentru fiecare coada poate fi un **Round Robin** sau alta euristica aleasa de cel care implementeaza
+ * problema care apare:
+	 * o coada poate sa isi termine de procesat sarcinile, astfel intrand in idle, in timp ce cealalta ramane incarcata
+ * solutie:
+	 * `work stealing` - la un moment dat cand o coada ramane cu putine sarcini de executat, aceasta se uita la celelalte cozi si mai ia din sarcinile ramase
+> [NOTE!] Mecanismul de **work stealing** poate introduce un overhead + complexitate prin "uitarea" la celelalte cozi din jur. Implementarea unei MQMS ramane la latitudinea celui care o implementeaza.
+
+###  Linux Multiprocessor Schedulers
+ * nu exista un algoritm standard: printre cei mai renumiti sunt:
+	 * `the O(1) scheduler`
+	 * `CFS`
+	 * `BFS` - nu vine de la cautarea pe grafuri bfs
+> [NOTE!] Pentru mai multe informatii vezi `Chapter 10.6` pentru cateva explicatii + referinte si `Chapter 9.2` pentru **CFS**.
 
 ## Notes from the book
  * In early (or simple) operating systems, the loading process is done eagerly, i.e., all at once before running the program; modern OSes perform the process lazily, i.e., by loading pieces of code or data only as they are
